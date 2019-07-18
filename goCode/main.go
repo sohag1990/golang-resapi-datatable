@@ -29,6 +29,7 @@ func main() {
 	if port == "" {
 		port = "8000"
 	}
+	// do your pagination using offset param
 	r.GET("/employees/:offset", GetEmployees)
 
 	http.ListenAndServe(":"+port, r)
