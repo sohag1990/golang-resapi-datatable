@@ -44,19 +44,24 @@ func GetEmployees(c *gin.Context) {
 		faker.FakeData(&emp)
 		employees = append(employees, emp)
 	}
+	var data Data
+	data.Data = employees
+	c.JSON(200, data)
+}
 
-	c.JSON(200, employees)
+type Data struct {
+	Data []Employee `json:"data"`
 }
 
 type Employee struct {
-	RowID     int    `gorm:"primary_key"`
+	// RowID     int    `gorm:"primary_key"`
 	FirstName string `gorm:"type:varchar(255)"`
 	LastName  string `gorm:"type:varchar(255)"`
-	Position  string `gorm:"type:varchar(255)"`
-	Email     string `gorm:"type:varchar(255)"`
-	Office    string `gorm:"type:varchar(255)"`
-	Extn      string `gorm:"type:varchar(255)"`
-	Age       int
-	Salary    string `gorm:"type:varchar(255)"`
-	StartDate string `gorm:"type:varchar(255)"`
+	// Position  string `gorm:"type:varchar(255)"`
+	// Email     string `gorm:"type:varchar(255)"`
+	// Office    string `gorm:"type:varchar(255)"`
+	// Extn      string `gorm:"type:varchar(255)"`
+	// Age       int
+	// Salary    string `gorm:"type:varchar(255)"`
+	// StartDate string `gorm:"type:varchar(255)"`
 }
